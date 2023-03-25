@@ -5,7 +5,13 @@ import (
   "fmt"
   "log"
   _ "github.com/mattn/go-sqlite3"
+  "sync"
 )
+
+type WebCrawler struct {
+  foo int
+  mu sync.Mutex
+}
 
 func database() {
 	db, err := sql.Open("sqlite3", "./foo.db")
@@ -27,6 +33,7 @@ func database() {
 }
 
 func main() {
+  crawl_targets := WebCrawler {}
   c := make(chan int)
   go func(chan int) {
     fmt.Println("Hello world")
