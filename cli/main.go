@@ -2,10 +2,11 @@ package main
 
 import (
   "database/sql"
-  "fmt"
+  //"fmt"
   "log"
   _ "github.com/mattn/go-sqlite3"
   "sync"
+  "github.com/amchang/golang-cli/web"
 )
 
 type WebCrawler struct {
@@ -33,6 +34,7 @@ func database() {
 }
 
 func main() {
+  /*
   crawl_targets := WebCrawler {}
   c := make(chan int)
   go func(chan int) {
@@ -40,5 +42,6 @@ func main() {
     database()
     c <- 1
   }(c)
-  <- c 
+  <- c*/
+  web.Server()
 }
